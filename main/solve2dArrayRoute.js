@@ -1,45 +1,73 @@
-function solve2DArrayRoute($scope,$timeout){
+function solve2DArrayRoute($timeout){
+  console.log($timeout);
+
   function solveArrayRec(array,row,col){
+    var tile;
+    return new Promise(function(resolve,reject){
+      if(!valid(array,row,col)){
+        reject("not Valid");
+        return;
+      }else{
+        tile = array[row][col];
+        if(tile.end){
+          tile.route = true;
+          resolve(true);
+        }else{
+          tile.route = true;
 
-    if(!valid(array,row,col)){
+          resolve(false);
+        }
+      }
+
+
+    }).then(function(done) {
+
+      if(!done){
+        return $timeout(function(){
+
+        },1000).then(function() {
+          return solveArrayRec(array,row+1,col);
+        }).then(function(done){
+          if(!done){
+            return solveArrayRec(array,row,col+1);
+          }else{
+            return done;
+          }
+        }).then(function(done){
+          if(!done){
+            return solveArrayRec(array,row,col-1);
+          }else{
+            return done;
+          }
+        },function(){
+          return false;
+        }).then(function(done){
+          if(!done){
+            done = solveArrayRec(array,row-1,col);
+          }else{
+            return done;
+          }
+        },function(){
+          return false;
+        }).then(function(done){
+          if(!done){
+            tile.passed = true;
+            tile.route = false;
+          }
+          return done;
+        },function() {
+          return false;
+        });
+
+      }else{
+        return done;
+      }
+    },function() {
       return false;
-    }
-    var tile = array[row][col];
-    if(tile.end){
-      tile.route = true;
-      return true;
-    }
-
-    tile.route = true;
-
-    var wait = async().then(function() {
-      return solveArrayRec(array,row+1,col);
-    }).then(function(done){
-      if(!done){
-        return solveArrayRec(array,row,col+1);
-      }else{
-        return done;
-      }
-    }).then(function(done){
-      if(!done){
-        return solveArrayRec(array,row,col-1);
-      }else{
-        return done;
-      }
-    }).then(function(done){
-      if(!done){
-        done = solveArrayRec(array,row-1,col);
-      }else{
-        return done;
-      }
-    }).then(function(done){
-      if(!done){
-        tile.passed = true;
-        tile.route = false;
-      }
-      return done;
     });
-    return wait;
+
+
+
 
 
   }
@@ -57,13 +85,7 @@ function solve2DArrayRoute($scope,$timeout){
 
 
 }
-function async() {
-  return new Promise(function(resolve) {
-      setTimeout(function(){
-        resolve();
-      }, 100);
-  });
-}
+
 function valid(array,row,col){
   console.log("row"+row+" "+"col "+col);
   if((row<0||row>=array.length||col<0||col>=array[row].length)){
