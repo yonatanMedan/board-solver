@@ -6,7 +6,6 @@ function solve2DArrayRoute($scope,$timeout){
       console.log("solve2DArrayRoute");
       console.log("row"+" "+startRow);
       var done = solveArrayRec(array,startRow,startCol);
-      console.log(done);
       return done;
     }
   };
