@@ -1,0 +1,23 @@
+.tile{
+  background-color: blue;
+  border: 1px solid black;
+  height: 5vh;
+
+}
+.board{
+  display: flex;
+  margin: auto auto auto auto;
+  width: 30%;
+
+}
+
+.clicked {
+  background-color: green;
+}
+p{
+  font-size: 0.7em;
+  margin-right: 10px;
+}
+.route{
+  background-color: yellow;
+}
