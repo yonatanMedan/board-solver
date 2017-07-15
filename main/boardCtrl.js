@@ -1,34 +1,30 @@
-function tile (_row,_col){
-  this.start = false;
-  this.end = false;
-  this.blocked = false;
-  this.route = false;
-  this.row = _row;
-  this.col = _col;
-}
-function boardCtrl($scope,pazzelSolver,$timeout){
 
-  console.log(pazzelSolver);
+function boardCtrl($scope,pazzelSolver,$timeout,boardService,$location,helperService){
+
   $scope.chooseEnd = false;
   $scope.chooseStart = false;
   $scope.start = null;
   $scope.end = null;
   $scope.board = [];
   $scope.selected = null;
-  for (var i = 0; i < 12; i++) {
-    var row = [];
-    for (var j = 0; j < 12; j++) {
-      row.push(new tile(i,j));
-    }
-    console.log(row);
-    $scope.board.push(row);
-  }
+  $scope.board = [];
+  $scope.board = boardService.createBoard();
   console.log($scope.board);
 
-
   $scope.go = function () {
-    alert("go");
-    pazzelSolver.solve($scope.board,$scope.start,$timeout);
+    var startTime = new Date();
+    var endTime;
+    pazzelSolver.solve($scope.board,$scope.start,$timeout).then(function(done){
+    steps = pazzelSolver.getSteps();
+      if(done){
+        endTime = new Date();
+        var totalTime = endTime-startTime;
+        var time = helperService.formatTime(totalTime);
+
+
+        $location.path("/finished/"+steps+"/"+time);
+      }
+    });
   };
   $scope.onClicked = function(tile){
     if($scope.chooseStart){

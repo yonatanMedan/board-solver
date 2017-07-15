@@ -5,35 +5,19 @@
   <link rel="stylesheet" type="text/css" href="./node_modules/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="main.css">
 </head>
-<body ng-app ="app" ng-controller="boardCtrl" >
-  <div  class="flex">
-    <div class="flex-item container board">
-      <div class="row" ng-repeat="row in board">
-        
-        <div class="col-xs-1 tile" ng-repeat="tile in row" ng-click="onClicked(tile)"
-        ng-class="{clicked:tile.blocked,route:tile.route}" >
-          <p ng-show="tile.start">
-            start
-          </p>
-          <p ng-show="tile.end">
-            end
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <button class="btn btn-success" ng-click="activeChooseStart()">start</button>
-  <button class="btn btn-danger" ng-click="activeChooseEnd()">end</button>
-  <button class="btn btn-primary" ng-click="go()">go</button>
-
-
+<body ng-app ="app"  >
+  <div ng-view></div>
 
 
 
 
   <script src="./node_modules/angular/angular.js"></script>
+  <script src="./node_modules/angular-route/angular-route.js"></script>
   <script src="./main/solve2dArrayRoute.js"></script>
+  <script src="./main/boardService.js"></script>
+  <script src="./main/helperService.js"></script>
   <script src="./main/boardCtrl.js"></script>
+  <script src="./finishedScreen/finishedCtrl.js"></script>
   <script src="index.js"> </script>
 
 </body>

@@ -1,18 +1,22 @@
 function solve2DArrayRoute($timeout){
-
+ //the recursive function
+  var steps = 1;
   function solveArrayRec(array,row,col){
     var tile;
+
     return $timeout(function(){
 
     },100).then(function(){
       if(!valid(array,row,col)){
         return false;
       }else{
+
         tile = array[row][col];
         if(tile.end){
           tile.route = true;
           return true;
         }else{
+          steps++;
           tile.route = true;
           return solveArrayRec(array,row+1,col).then(function(done){
             if(!done){
@@ -50,7 +54,10 @@ function solve2DArrayRoute($timeout){
       var startCol = start.col;
       console.log("solve2DArrayRoute");
       console.log("row"+" "+startRow);
-      solveArrayRec(array,startRow,startCol);
+      return solveArrayRec(array,startRow,startCol);
+    },
+    getSteps:function(){
+      return steps;
     }
 
   };
