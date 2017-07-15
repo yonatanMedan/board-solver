@@ -1,5 +1,6 @@
+
 function solve2DArrayRoute($timeout){
- //the recursive function
+ //slolves a 2dArray find route problem reqursivly with 100 milisecs between each recusive function call;
   var steps = 1;
   function solveArrayRec(array,row,col){
     var tile;

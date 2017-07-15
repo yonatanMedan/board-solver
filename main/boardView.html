@@ -1,5 +1,4 @@
-<div>
-  <style ng-bind-html="mystyles"></style>
+<div class="flex-container">
   <table class="board">
     <tr ng-repeat="row in board" >
       <th class="tile" ng-repeat="tile in row" ng-click="onClicked(tile)"
@@ -15,6 +14,11 @@
       </th>
     </tr>
   </table>
+
+
+
+</div>
+<div class="nav-fixed-left">
   <ul class="nav nav-pills nav-stacked btn-group-vertical">
     <button class="btn btn-success" ng-click="activeChooseStart()">start</button>
     <button class="btn btn-danger" ng-click="activeChooseEnd()">end</button>
@@ -32,5 +36,4 @@
     default color
   </p>
   <input type="color"  color-bind="defaultTile" ng-model="defaultTileColor" />
-
 </div>

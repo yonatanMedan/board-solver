@@ -12,7 +12,12 @@
   height:33.33vh;
 
 }
-
+.nav-fixed-left{
+  position: absolute;
+  display: inline;
+  top:30vh;
+  left: 10px;
+}
 .clicked {
   background-color: green;
 }
@@ -81,4 +86,11 @@ a{
 a:hover{
   text-decoration: none;
 
+}
+.flex-container{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
