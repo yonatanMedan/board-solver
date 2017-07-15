@@ -20,8 +20,11 @@ function boardCtrl($scope,pazzelSolver,$timeout){
     for (var j = 0; j < 12; j++) {
       row.push(new tile(i,j));
     }
+    console.log(row);
     $scope.board.push(row);
   }
+  console.log($scope.board);
+
 
   $scope.go = function () {
     alert("go");

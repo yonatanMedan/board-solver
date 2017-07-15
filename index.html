@@ -9,6 +9,7 @@
   <div  class="flex">
     <div class="flex-item container board">
       <div class="row" ng-repeat="row in board">
+        
         <div class="col-xs-1 tile" ng-repeat="tile in row" ng-click="onClicked(tile)"
         ng-class="{clicked:tile.blocked,route:tile.route}" >
           <p ng-show="tile.start">
