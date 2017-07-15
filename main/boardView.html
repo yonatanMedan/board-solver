@@ -1,21 +1,23 @@
-<div >
-  <div  class="flex">
-    <div class="flex-item container board">
-      <div class="row" ng-repeat="row in board">
+<div>
+  <table class="board">
+    <tr ng-repeat="row in board">
+      <th class="tile" ng-repeat="tile in row" ng-click="onClicked(tile)"
+      ng-class="{clicked:tile.blocked,route:tile.route}" >
+       <div >
+         <p ng-show="tile.start" >
+           start
+         </p>
+         <p ng-show="tile.end">
+           end
+         </p>
+       </div>
+      </th>
+    </tr>
+  </table>
+  <ul class="nav nav-pills nav-stacked btn-group-vertical">
+    <button class="btn btn-success" ng-click="activeChooseStart()">start</button>
+    <button class="btn btn-danger" ng-click="activeChooseEnd()">end</button>
+    <button class="btn btn-primary" ng-click="go()">go</button>
+  </ul>
 
-        <div class="col-xs-1 tile" ng-repeat="tile in row" ng-click="onClicked(tile)"
-        ng-class="{clicked:tile.blocked,route:tile.route}" >
-          <p ng-show="tile.start">
-            start
-          </p>
-          <p ng-show="tile.end">
-            end
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <button class="btn btn-success" ng-click="activeChooseStart()">start</button>
-  <button class="btn btn-danger" ng-click="activeChooseEnd()">end</button>
-  <button class="btn btn-primary" ng-click="go()">go</button>
 </div>
