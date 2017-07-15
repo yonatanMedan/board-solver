@@ -1,6 +1,8 @@
 
 function boardCtrl($scope,pazzelSolver,$timeout,boardService,$location,helperService){
-
+  $scope.clickedColor = "#2e2eb4";
+  $scope.routeColor = "#7fc21e";
+  $scope.defaultTileColor = "#800085";
   $scope.chooseEnd = false;
   $scope.chooseStart = false;
   $scope.start = null;
@@ -9,8 +11,6 @@ function boardCtrl($scope,pazzelSolver,$timeout,boardService,$location,helperSer
   $scope.selected = null;
   $scope.board = [];
   $scope.board = boardService.createBoard();
-  console.log($scope.board);
-
   $scope.go = function () {
     var startTime = new Date();
     var endTime;
@@ -23,6 +23,8 @@ function boardCtrl($scope,pazzelSolver,$timeout,boardService,$location,helperSer
 
 
         $location.path("/finished/"+steps+"/"+time);
+      }else{
+        alert("not possible refresh and try again");
       }
     });
   };

@@ -57,7 +57,9 @@ function solve2DArrayRoute($timeout){
       return solveArrayRec(array,startRow,startCol);
     },
     getSteps:function(){
-      return steps;
+      var temp  = steps;
+      steps  = 1;
+      return temp;
     }
 
   };

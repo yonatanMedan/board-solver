@@ -16,7 +16,6 @@ function boardService(){
         for (var j = 0; j < 12; j++) {
           row.push(new tile(i,j));
         }
-        console.log(row);
         board.push(row);
       }
       return board;

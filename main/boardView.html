@@ -1,8 +1,9 @@
 <div>
+  <style ng-bind-html="mystyles"></style>
   <table class="board">
-    <tr ng-repeat="row in board">
+    <tr ng-repeat="row in board" >
       <th class="tile" ng-repeat="tile in row" ng-click="onClicked(tile)"
-      ng-class="{clicked:tile.blocked,route:tile.route}" >
+      ng-class="{clicked:tile.blocked,route:tile.route, defaultTile:!tile.blocked && !tile.route}"  >
        <div >
          <p ng-show="tile.start" >
            start
@@ -19,5 +20,17 @@
     <button class="btn btn-danger" ng-click="activeChooseEnd()">end</button>
     <button class="btn btn-primary" ng-click="go()">go</button>
   </ul>
+  <p>
+    blocked color
+  </p>
+  <input type="color"  color-bind="clicked" ng-model="clickedColor"  />
+  <p>
+    route color
+  </p>
+  <input type="color"  color-bind="route" ng-model="routeColor" />
+  <p>
+    default color
+  </p>
+  <input type="color"  color-bind="defaultTile" ng-model="defaultTileColor" />
 
 </div>

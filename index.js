@@ -4,6 +4,7 @@ app.controller("finishedCtrl",["$scope","$routeParams",finishedCtrl]);
 app.service("pazzelSolver",["$timeout",solve2DArrayRoute]);
 app.service("boardService",[boardService]);
 app.service("helperService",[helperService]);
+app.directive("colorBind",[colorBindDirective]);
 
 //router
 app.config(function($routeProvider) {
