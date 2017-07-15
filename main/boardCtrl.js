@@ -12,6 +12,7 @@ function boardCtrl($scope,pazzelSolver,$timeout,boardService,$location,helperSer
   $scope.board = [];
   $scope.board = boardService.createBoard();
   $scope.go = function () {
+    //starts passelSolver and messures time
     var startTime = new Date();
     var endTime;
     pazzelSolver.solve($scope.board,$scope.start,$timeout).then(function(done){
@@ -19,11 +20,13 @@ function boardCtrl($scope,pazzelSolver,$timeout,boardService,$location,helperSer
       if(done){
         endTime = new Date();
         var totalTime = endTime-startTime;
+        //format time to HH:mm:ss:cc
         var time = helperService.formatTime(totalTime);
 
-
+        //go to finished screen of done
         $location.path("/finished/"+steps+"/"+time);
       }else{
+        // not possible route
         alert("not possible refresh and try again");
       }
     });

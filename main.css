@@ -31,62 +31,7 @@ th p{
   margin-bottom: 0%;
   text-align: right;
 }
-.startOver{
-  display: flex;
-  align-items: center;
-  background-color: rgb(183, 183, 183);
-  width: 170px;
-  height:33px;
-  margin-left: 10px;
-  color: #0060B6;
-  text-decoration: none;
-}
-.startOver:hover{
-  background-color: rgba(24, 8, 8, 0.74)
-}
-.greenLine{
-  display: inline;
-  background-color: green;
-  width: 5px;
-  height: 100%;
-  z-index: 5;
-}
-.circle{
 
-  border-radius:100%;
-  background-color: green;
-  width: 20px;
-  height: 20px;
-  padding-left: 3px;
-  margin-left: 3px;
-
-}
-a:hover  .circle {
-   background-color: red;
-}
-
-span{
- color: white;
- font-size: 12px;
-}
-h5{
-  color: white;
-  margin:auto;
-  font-family: "Times New Roman", Times, serif;
-  font-size: 22px;
-
-}
-h5:hover{
-  color:white;
-}
-
-a{
-  text-decoration: none;
-}
-a:hover{
-  text-decoration: none;
-
-}
 .flex-container{
   position: relative;
   display: flex;
